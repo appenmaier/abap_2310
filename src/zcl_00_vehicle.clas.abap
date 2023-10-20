@@ -1,5 +1,6 @@
 CLASS zcl_00_vehicle DEFINITION
   PUBLIC
+  ABSTRACT
   CREATE PUBLIC .
 
   PUBLIC SECTION.
@@ -15,7 +16,7 @@ CLASS zcl_00_vehicle DEFINITION
       RAISING
         zcx_00_inital_parameter. "public Vehicle(String make, String model) throws InitialParameterException
 
-    METHODS to_string
+    METHODS to_string ABSTRACT
       RETURNING VALUE(string) TYPE string.
 
   PROTECTED SECTION.
@@ -49,10 +50,6 @@ CLASS zcl_00_vehicle IMPLEMENTATION.
     me->make = make.
     me->model = model.
     number_of_vehicles += 1.
-  ENDMETHOD.
-
-  METHOD to_string.
-    string = |Vehicle: { make } { model }|.
   ENDMETHOD.
 
 ENDCLASS.
