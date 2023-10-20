@@ -4,6 +4,8 @@ CLASS zcl_00_carrier DEFINITION
   CREATE PUBLIC.
 
   PUBLIC SECTION.
+    INTERFACES zif_00_partner.
+
     DATA name      TYPE string.
     DATA airplanes TYPE z00_airplanes.
 
@@ -48,5 +50,9 @@ CLASS zcl_00_carrier IMPLEMENTATION.
       string &&= airplane->to_string( ) && ';'.
     ENDLOOP.
     string &&= |Biggest Cargo Plane: { get_biggest_cargo_plane( )->to_string( ) }|.
+  ENDMETHOD.
+
+  METHOD zif_00_partner~to_string.
+    string = to_string( ).
   ENDMETHOD.
 ENDCLASS.
